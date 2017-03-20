@@ -1,8 +1,7 @@
 /**
  * Created by sunlong on 16/8/3.
  */
-import {browserHistory} from "react-router";
-import "antd/lib/message/style/index.css";
+import {hashHistory} from "react-router";
 
 var Base64 = require('js-base64').Base64;
 
@@ -15,7 +14,7 @@ export default class Auth{
 
     logout(){
         sessionStorage.clear();
-        browserHistory.push('/user/login');
+        hashHistory.push('/user/login');
     }
 
     login(token, reload=false){
@@ -24,7 +23,7 @@ export default class Auth{
         if(reload){
             location.href = "/dashboard.html";
         }else{
-            browserHistory.push('/dashboard.html');
+            hashHistory.push('/dashboard.html');
         }
     }
 }
