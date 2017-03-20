@@ -1,0 +1,19 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "installedESLint": true,
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "indent": ["error", 4],
+        "max-len": ["error", 150],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent-props": ["error", 4],
+        "arrow-parens": ["error", "as-needed"],
+        "react/sort-comp": [0, {}]
+    }
+}
