@@ -6,16 +6,29 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import Fetch from '../../common/FetchIt';
 import API_URL from '../../common/url';
-import Header from '../common/Header';
+import Header from './header/Header';
 import store from '../../store';
+import Template from './Template';
+import PageContainer from './PageContainer';
+import Sidebar from './Sidebar';
 
 class Builder extends React.Component {
+    addPage = () => {
+
+    };
+
+    delPage = () => {
+
+    };
+
     render() {
         return (
             <div>
                 <Header />
                 <div className="builder">
-                    builder
+                    <Template currentPage={ this.props.currentPage }/>
+                    <PageContainer pages={ this.props.pages } />
+                    <Sidebar />
                 </div>
             </div>
         );
@@ -24,7 +37,8 @@ class Builder extends React.Component {
 
 const mapStateToProps = function (store) {
     return {
-        posts: store.h5State.posts,
+        pages: store.h5State.pages,
+        currentPage: store.h5State.currentPage,
     };
 };
 

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import userReducer from './userReducer';
+import h5Reducer from './h5Reducer';
 
 const reducers = combineReducers({
-    userState: userReducer,
+    h5State: h5Reducer,
 });
 
 export default reducers;

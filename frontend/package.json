@@ -15,11 +15,13 @@
     "js-base64": "^2.1.9",
     "jsonwebtoken": "^7.1.7",
     "moment": "^2.14.1",
+    "normalize.css": "^5.0.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
+    "redux-undo": "^1.0.0-beta9-8",
     "style-loader": "^0.13.1",
     "whatwg-fetch": "^1.0.0"
   },
