@@ -12,7 +12,7 @@ import Template from './Template';
 import PageContainer from './PageContainer';
 import { addPage } from '../../actions/h5Actions';
 import PageModal from './modal/PageModal';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar/Sidebar';
 
 import './builder.less';
 
@@ -36,7 +36,7 @@ class Builder extends React.Component {
                 <div className="builder">
                     <Template />
                     <PageContainer pages={this.props.pages} />
-                    <Sidebar />
+                    <Sidebar pages={this.props.pages} />
                 </div>
             </div>
         );
