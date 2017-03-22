@@ -1,15 +1,15 @@
 # H5 Show
-h5 page builder with css3 animations 
+一款h5页面编辑器，h5营销制作工具
 
-mock www.eqxiu.com and www.rabbitpre.com
-## pc/web
-#### skills
+模仿www.eqxiu.com and www.rabbitpre.com
+## pc/web端
+#### 技术
 * react
 * redux
 * react-router
 * immutable.js
 
-#### Usage
+#### 安装运行
 ```bash
     git clone git@github.com:sunlong/h5.git
     cd h5/frontend
@@ -17,7 +17,7 @@ mock www.eqxiu.com and www.rabbitpre.com
     webpack-dev-server
 ```
 
-## mobile/app
-need to do
-#### skills
+## mobile/app端
+待做
+#### 技术
 * react-native
