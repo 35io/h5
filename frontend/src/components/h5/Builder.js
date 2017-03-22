@@ -10,11 +10,19 @@ import Header from './header/Header';
 import store from '../../store';
 import Template from './Template';
 import PageContainer from './PageContainer';
+import { addPage } from '../../actions/h5Actions';
+import PageModal from './modal/PageModal';
 import Sidebar from './Sidebar';
 
-class Builder extends React.Component {
-    addPage = () => {
+import './builder.less';
 
+class Builder extends React.Component {
+    componentDidMount = () => {
+        this.addPage();
+    };
+
+    addPage = () => {
+        store.dispatch(addPage(new PageModal()));
     };
 
     delPage = () => {
@@ -26,8 +34,8 @@ class Builder extends React.Component {
             <div>
                 <Header />
                 <div className="builder">
-                    <Template currentPage={ this.props.currentPage }/>
-                    <PageContainer pages={ this.props.pages } />
+                    <Template />
+                    <PageContainer pages={this.props.pages} />
                     <Sidebar />
                 </div>
             </div>

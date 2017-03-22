@@ -2,40 +2,19 @@
  * Created by sunlong on 2017/3/20.
  */
 import React from 'react';
-import moment from 'moment';
-import { connect } from 'react-redux';
-import Fetch from '../../common/FetchIt';
-import API_URL from '../../common/url';
-import store from '../../store';
+import Word from './Word';
 
-class Page extends React.Component {
-    addWord = (word) => {
-        store.dispatch(word);
-    };
-
-    addImage = () => {
-
-    };
-
-    render() {
-        return (
-            <div>
-                {
-                    this.props.words.map(word => {return word;})
-                }
-                {
-                    this.props.images.map(image => {return image;})
-                }
-            </div>
-        );
-    }
+function Page({words=[], images=[]}) {
+    return (
+        <div>
+            {
+                words.map(word => <Word key={word.id} value={word} />)
+            }
+            {
+                images.map(image => {return image;})
+            }
+        </div>
+    );
 }
 
-const mapStateToProps = function (store) {
-    return {
-        words: store.pageState.words,
-        images: store.pageState.images,
-    };
-};
-
-export default connect(mapStateToProps)(Page);
+export default Page;

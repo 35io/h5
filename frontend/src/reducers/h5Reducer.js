@@ -1,26 +1,30 @@
-import * as types from '../actions/actionTypes';
 import Immutable from 'immutable';
+import * as types from '../actions/actionTypes';
 
 const initialState = {
     pages: [],
-    currentPage: null,
+    currentPage: 0,
 };
 
 export default function (state = initialState, action) {
+    const imState = Immutable.fromJS(state);
     if (action.type === types.PAGE_ADD) {
-        let newState = Immutable.fromJS(state);
-        newState = newState.merge(action);
-        return newState.toJS();
+        return imState.merge({ pages: [action.page], currentPage: imState.get('pages').size }).toJS();
     }
 
     if (action.type === types.PAGE_DELETE) {
-        let newState = Immutable.fromJS(state);
-        let pages = newState.get('pages').filter(page => {
-            return page.key !== action.key;
-        });
-        newState.set('pages', pages);
-        return newState.toJS();
+        return state;
+    }
+
+    if (action.type === types.WORD_ADD) {
+        const currentPage = imState.get('pages').get(imState.get('currentPage'));
+        currentPage.words.push(action.word);
+        return imState.toJS();
+    }
+
+    if (action.type === types.WORD_DELETE) {
+        return state;
     }
 
     return state;
-};
+}

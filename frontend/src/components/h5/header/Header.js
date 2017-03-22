@@ -3,16 +3,13 @@
  */
 import React from 'react';
 import './header.less';
-import Word from '../Word';
+import WordModal from '../modal/WordModal';
+import store from '../../../store';
+import { addWord } from '../../../actions/h5Actions';
 
 class Header extends React.Component {
     addWord = () => {
-        const { currentPage } = this.props;
-        if(currentPage == null){
-            alert('请选择一页进行添加');
-        }else{
-            currentPage.addWord(<Word />);
-        }
+        store.dispatch(addWord(new WordModal()));
     };
 
     render() {
