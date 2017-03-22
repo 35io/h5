@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
         return (
             <div className="sidebar">
                 {
-                    this.props.pages.map((page, index) => <div>第 {index+1} 页</div>)
+                    this.props.pages.map((page, index) => <div key={page.id}>第 {index+1} 页</div>)
                 }
             </div>
         );

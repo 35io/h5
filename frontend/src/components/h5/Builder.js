@@ -9,7 +9,7 @@ import API_URL from '../../common/url';
 import Header from './header/Header';
 import store from '../../store';
 import Template from './Template';
-import PageContainer from './PageContainer';
+import PageContainer from './pageContainer/PageContainer';
 import { addPage } from '../../actions/h5Actions';
 import PageModal from './modal/PageModal';
 import Sidebar from './sidebar/Sidebar';
