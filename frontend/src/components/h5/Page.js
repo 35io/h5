@@ -4,11 +4,11 @@
 import React from 'react';
 import Word from './Word';
 
-function Page({words=[], images=[]}) {
+function Page({words=[], images=[], focusId }) {
     return (
         <div>
             {
-                words.map(word => <Word key={word.id} value={word} />)
+                words.map(word => <Word key={word.id} value={word} focusId={focusId} />)
             }
             {
                 images.map(image => {return image;})

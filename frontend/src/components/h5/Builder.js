@@ -35,7 +35,7 @@ class Builder extends React.Component {
                 <Header />
                 <div className="builder">
                     <Template />
-                    <PageContainer pages={this.props.pages} />
+                    <PageContainer pages={this.props.pages} focusId={this.props.focusId} />
                     <Sidebar pages={this.props.pages} />
                 </div>
             </div>
@@ -47,6 +47,7 @@ const mapStateToProps = function (store) {
     return {
         pages: store.h5State.pages,
         currentPage: store.h5State.currentPage,
+        focusId: store.h5State.focusId,
     };
 };
 

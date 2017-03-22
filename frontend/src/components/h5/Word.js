@@ -2,12 +2,21 @@
  * Created by sunlong on 2017/3/20.
  */
 import React from 'react';
+import Rnd from 'react-rnd';
+import store from '../../store';
+import { changeFocus } from '../../actions/h5Actions';
 
-function Word({value}) {
+function Word({value, focusId}) {
+    const wordClicked = () => {
+        store.dispatch(changeFocus(value.id));
+    };
+
     return (
-        <div>
-            <span>{ value.text }</span>
-        </div>
+        <Rnd onClick={wordClicked} className={focusId == value.id ? 'focused' : ''}>
+            <div>
+                <span>{ value.text }</span>
+            </div>
+        </Rnd>
     );
 }
 

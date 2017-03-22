@@ -27,3 +27,10 @@ export function delWord(key) {
         key,
     };
 }
+
+export function changeFocus(id) {
+    return {
+        type: types.FOCUS_CHANGED,
+        id,
+    };
+}

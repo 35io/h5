@@ -12,7 +12,7 @@ class PageContainer extends React.Component {
                 <div className="phone">
                     <div>
                         {
-                            this.props.pages.map(page => <Page key={page.id} {...page} />)
+                            this.props.pages.map(page => <Page key={page.id} {...page} focusId={this.props.focusId} />)
                         }
                     </div>
                 </div>

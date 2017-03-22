@@ -4,6 +4,7 @@ import * as types from '../actions/actionTypes';
 const initialState = {
     pages: [],
     currentPage: 0,
+    focusId: 0
 };
 
 export default function (state = initialState, action) {
@@ -24,6 +25,10 @@ export default function (state = initialState, action) {
 
     if (action.type === types.WORD_DELETE) {
         return state;
+    }
+
+    if (action.type === types.FOCUS_CHANGED) {
+        return imState.merge({focusId: action.id}).toJS();
     }
 
     return state;

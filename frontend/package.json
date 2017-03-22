@@ -19,6 +19,7 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
+    "react-rnd": "^4.2.2",
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
     "redux-undo": "^1.0.0-beta9-8",
