@@ -4,14 +4,16 @@
 import React from 'react';
 import Word from './Word';
 
-function Page({words=[], images=[], focusId }) {
+function Page({ elements = [], focusId }) {
     return (
         <div>
             {
-                words.map(word => <Word key={word.id} value={word} focusId={focusId} />)
-            }
-            {
-                images.map(image => {return image;})
+                elements.map(element => {
+                    switch (element.constructor.name) {
+                    case 'WordModal': return <Word key={element.id} value={element} focusId={focusId} />;
+                    default: return null;
+                    }
+                })
             }
         </div>
     );

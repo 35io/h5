@@ -5,7 +5,6 @@
 export default class PageModal {
     constructor() {
         this.id = new Date().getTime();
-        this.words = [];
-        this.images = [];
+        this.elements = [];
     }
 }
