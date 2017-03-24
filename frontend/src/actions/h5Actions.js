@@ -34,3 +34,10 @@ export function changeFocus(id) {
         id,
     };
 }
+
+export function rotate(degree) {
+    return {
+        type: types.STYLE_ROTATE,
+        degree,
+    };
+}

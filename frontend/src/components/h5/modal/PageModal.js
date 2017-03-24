@@ -6,5 +6,6 @@ export default class PageModal {
     constructor() {
         this.id = new Date().getTime();
         this.elements = [];
+        this.style = {};
     }
 }

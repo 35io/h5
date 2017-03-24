@@ -4,7 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import Draggable from 'react-draggable';
 import Resizable from 'react-resizable-box';
-import './rnd.less';
+import Rotate from './Rotate';
 
 const boxStyle = {
     width: 'auto',
@@ -150,7 +150,7 @@ export default class ReactRnd extends Component {
         }
         this.props.onResize(dir, styleSize, clientSize, delta, {
             x: this.state.x,
-            y: this.state.y
+            y: this.state.y,
         });
     }
 
@@ -159,7 +159,7 @@ export default class ReactRnd extends Component {
         this.isResizing = false;
         this.props.onResizeStop(dir, styleSize, clientSize, delta, {
             x: this.state.x,
-            y: this.state.y
+            y: this.state.y,
         });
     }
 
@@ -201,7 +201,7 @@ export default class ReactRnd extends Component {
         const { className, style, onClick, onTouchStart,
             initial, minWidth, minHeight, maxWidth, maxHeight,
             bounds, moveAxis, dragHandlerClassName, lockAspectRatio,
-            moveGrid, resizeGrid, onDoubleClick, rotate } = this.props;
+            moveGrid, resizeGrid, onDoubleClick } = this.props;
         const { x, y, zIndex } = this.state;
         return (
             <Draggable
@@ -220,37 +220,33 @@ export default class ReactRnd extends Component {
                 y={y}
             >
                 <div style={Object.assign({}, boxStyle, { zIndex })}>
-                    {
-                        rotate && (
-                            <div className="rotate">
-                                <div className="dot" />
-                                <div className="bar" />
-                            </div>
-                        )
-                    }
-                    <Resizable
-                        ref={c => { this.resizable = c; }}
-                        onClick={onClick}
-                        onDoubleClick={onDoubleClick}
-                        onTouchStart={onTouchStart}
-                        onResizeStart={this.onResizeStart}
-                        onResize={this.onResize}
-                        onResizeStop={this.onResizeStop}
-                        width={initial.width}
-                        height={initial.height}
-                        minWidth={minWidth}
-                        minHeight={minHeight}
-                        maxWidth={maxWidth}
-                        maxHeight={maxHeight}
-                        customStyle={Object.assign(style, { boxSizing: 'border-box' })}
-                        customClass={className}
-                        isResizable={this.props.isResizable}
-                        handleStyle={this.props.resizerHandleStyle}
-                        grid={resizeGrid}
-                        lockAspectRatio={lockAspectRatio}
-                    >
-                        {this.props.children}
-                    </Resizable>
+                    <div style={style}>
+                        {
+                            className !== '' && <Rotate />
+                        }
+                        <Resizable
+                            ref={c => { this.resizable = c; }}
+                            onClick={onClick}
+                            onDoubleClick={onDoubleClick}
+                            onTouchStart={onTouchStart}
+                            onResizeStart={this.onResizeStart}
+                            onResize={this.onResize}
+                            onResizeStop={this.onResizeStop}
+                            width={initial.width}
+                            height={initial.height}
+                            minWidth={minWidth}
+                            minHeight={minHeight}
+                            maxWidth={maxWidth}
+                            maxHeight={maxHeight}
+                            customClass={className}
+                            isResizable={this.props.isResizable}
+                            handleStyle={this.props.resizerHandleStyle}
+                            grid={resizeGrid}
+                            lockAspectRatio={lockAspectRatio}
+                        >
+                            {this.props.children}
+                        </Resizable>
+                    </div>
                 </div>
             </Draggable>
         );

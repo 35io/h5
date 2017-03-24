@@ -12,10 +12,8 @@ function Word({ value, focusId }) {
     };
 
     return (
-        <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} rotate={focusId === value.id}>
-            <div>
-                <span>{ value.text }</span>
-            </div>
+        <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} style={value.style}>
+            <div>{ value.text }</div>
         </Rnd>
     );
 }

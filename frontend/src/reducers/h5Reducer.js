@@ -31,5 +31,16 @@ export default function (state = initialState, action) {
         return imState.merge({ focusId: action.id }).toJS();
     }
 
+    if (action.type === types.STYLE_ROTATE) {
+        const currentPage = imState.get('pages').get(imState.get('currentPage'));
+        currentPage.elements.forEach(element => {
+            if (element.id === imState.get('focusId')) {
+                const style = Immutable.fromJS(element.style).merge({ transform: `rotate(${action.degree}deg)` });
+                element.style = style.toJS();
+            }
+        });
+        return imState.toJS();
+    }
+
     return state;
 }
