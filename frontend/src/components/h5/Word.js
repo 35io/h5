@@ -2,7 +2,7 @@
  * Created by sunlong on 2017/3/20.
  */
 import React from 'react';
-import Rnd from '../../common/rnd/ReactRnd';
+import Rnd from '../common/rnd/ReactRnd';
 import store from '../../store';
 import { changeFocus } from '../../actions/h5Actions';
 

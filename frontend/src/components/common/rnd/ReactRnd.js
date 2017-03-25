@@ -222,7 +222,7 @@ export default class ReactRnd extends Component {
                 <div style={Object.assign({}, boxStyle, { zIndex })}>
                     <div style={style}>
                         {
-                            className !== '' && <Rotate />
+                            className !== '' && <Rotate resizeableDom={this.resizable} />
                         }
                         <Resizable
                             ref={c => { this.resizable = c; }}

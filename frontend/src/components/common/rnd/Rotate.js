@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import store from '../../store';
-import { rotate } from '../../actions/h5Actions';
+import ReactDOM from 'react-dom';
+import store from '../../../store';
+import { rotate } from '../../../actions/h5Actions';
 import './rotate.less';
 
 export default class ReactRnd extends Component {
@@ -8,7 +9,7 @@ export default class ReactRnd extends Component {
         const tempX = this.centerPoint.x - point.x;
         const tempY = this.centerPoint.y - point.y;
 
-        return - Math.atan2(tempX, tempY) * 180 / Math.PI;
+        return -Math.atan2(tempX, tempY) * 180 / Math.PI;
     };
 
     endRotate = e => {
@@ -25,15 +26,13 @@ export default class ReactRnd extends Component {
 
     rotate = e => {
         const current = this.computeDegree({ x: e.pageX, y: e.pageY });
-        const endDegree = current - this.lastDegree;
-        this.lastDegree = current;
-        store.dispatch(rotate(endDegree));
+        store.dispatch(rotate(current));
     };
 
     beginRotate = e => {
         e.stopPropagation();
-        this.centerPoint = { x: 0, y: 0 };
-        this.lastDegree = this.computeDegree({ x: e.pageX, y: e.pageY });
+        const dom = ReactDOM.findDOMNode(this.props.resizeableDom);
+        this.centerPoint = { x: dom.getBoundingClientRect().left + (dom.clientWidth / 2), y: dom.getBoundingClientRect().top + (dom.clientHeight / 2) };
         //
         this.addListeners();
     };

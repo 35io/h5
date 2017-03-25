@@ -9,7 +9,7 @@
     ],
     "rules": {
         "indent": ["error", 4],
-        "max-len": ["error", 150],
+        "max-len": ["error", 200],
         "react/jsx-indent": ["error", 4],
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
         "react/jsx-indent-props": ["error", 4],
