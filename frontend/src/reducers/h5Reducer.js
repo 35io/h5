@@ -4,7 +4,7 @@ import * as types from '../actions/actionTypes';
 const initialState = {
     pages: [],
     currentPage: 0,
-    focusId: 0,
+    focus: {},
 };
 
 export default function (state = initialState, action) {
@@ -28,7 +28,7 @@ export default function (state = initialState, action) {
     }
 
     if (action.type === types.FOCUS_CHANGED) {
-        return imState.merge({ focusId: action.id }).toJS();
+        return imState.merge({ focus: action.focus }).toJS();
     }
 
     if (action.type === types.STYLE_ROTATE) {

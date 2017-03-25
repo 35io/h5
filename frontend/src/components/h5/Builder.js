@@ -4,8 +4,7 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import Fetch from '../../common/FetchIt';
-import API_URL from '../../common/url';
+import Panel from './panel/Panel';
 import Header from './header/Header';
 import store from '../../store';
 import Template from './Template';
@@ -35,7 +34,8 @@ class Builder extends React.Component {
                 <Header />
                 <div className="builder">
                     <Template />
-                    <PageContainer pages={this.props.pages} focusId={this.props.focusId} />
+                    <PageContainer pages={this.props.pages} focusId={this.props.focus.id} />
+                    <Panel focus={this.props.focus} />
                     <Sidebar pages={this.props.pages} />
                 </div>
             </div>
@@ -47,7 +47,7 @@ const mapStateToProps = function (store) {
     return {
         pages: store.h5State.pages,
         currentPage: store.h5State.currentPage,
-        focusId: store.h5State.focusId,
+        focus: store.h5State.focus,
     };
 };
 

@@ -8,7 +8,7 @@ import { changeFocus } from '../../actions/h5Actions';
 
 function Word({ value, focusId }) {
     const wordClicked = () => {
-        store.dispatch(changeFocus(value.id));
+        store.dispatch(changeFocus({ id: value.id, type: 'word' }));
     };
 
     return (
