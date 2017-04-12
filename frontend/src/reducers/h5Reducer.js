@@ -17,9 +17,9 @@ export default function (state = initialState, action) {
         return state;
     }
 
-    if (action.type === types.WORD_ADD) {
+    if (action.type === types.ELEMENT_ADD) {
         const currentPage = imState.get('pages').get(imState.get('currentPage'));
-        currentPage.elements.push(action.word);
+        currentPage.elements.push(...action.elements);
         return imState.toJS();
     }
 

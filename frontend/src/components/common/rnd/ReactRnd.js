@@ -132,7 +132,7 @@ export default class ReactRnd extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isDraggable !== this.state.isDraggable) {
+        if ((nextProps.isDraggable!==undefined) && (nextProps.isDraggable !== this.state.isDraggable)) {
             this.setState({
                 isDraggable: nextProps.isDraggable,
             });

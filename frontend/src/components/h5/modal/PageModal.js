@@ -1,10 +1,12 @@
 /**
  * Created by sunlong on 2017/3/20.
  */
+import BaseModal from './BaseModal';
 
-export default class PageModal {
+export default class PageModal extends BaseModal {
     constructor() {
-        this.id = new Date().getTime();
+        super();
+        this.id = this.generateId();
         this.elements = [];
         this.style = {};
     }

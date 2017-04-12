@@ -3,12 +3,12 @@
  */
 import BaseModal from './BaseModal';
 
-export default class WordModal extends BaseModal {
-    constructor(text = '双击输入文字') {
+export default class ButtonModal extends BaseModal {
+    constructor(type = 'submit', text = '提交') {
         super();
         this.id = this.generateId();
         this.text = text;
         this.style = {};
-        this.contenteditable = false;
+        this.type = type;
     }
 }

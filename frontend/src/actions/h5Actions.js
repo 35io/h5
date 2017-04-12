@@ -14,10 +14,10 @@ export function delPage(key) {
     };
 }
 
-export function addWord(word) {
+export function addElements(...elements) {
     return {
-        type: types.WORD_ADD,
-        word,
+        type: types.ELEMENT_ADD,
+        elements,
     };
 }
 
