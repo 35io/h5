@@ -120,7 +120,7 @@ export default class ReactRnd extends Component {
             x: props.initial.x,
             y: props.initial.y,
             original: { x: props.initial.x, y: props.initial.y },
-            zIndex: props.zIndex
+            zIndex: props.zIndex,
         };
         this.isResizing = false;
         this.onDragStart = this.onDragStart.bind(this);
@@ -129,6 +129,14 @@ export default class ReactRnd extends Component {
         this.onResizeStart = this.onResizeStart.bind(this);
         this.onResize = this.onResize.bind(this);
         this.onResizeStop = this.onResizeStop.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isDraggable !== this.state.isDraggable) {
+            this.setState({
+                isDraggable: nextProps.isDraggable,
+            });
+        }
     }
 
     onResizeStart(dir, styleSize, clientSize, e) {

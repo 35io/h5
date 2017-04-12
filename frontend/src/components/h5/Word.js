@@ -15,7 +15,7 @@ function Word({ value, focusId }) {
         store.dispatch(changeWordEditable(value.id));
     };
     return (
-        <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} style={value.style}>
+        <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} style={value.style} isDraggable={!value.contenteditable}>
             <div contentEditable={value.contenteditable} onDoubleClick={changeEditable} onBlur={changeEditable}>{ value.text }</div>
         </Rnd>
     );
