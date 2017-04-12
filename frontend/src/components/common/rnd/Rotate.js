@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import store from '../../../store';
-import { rotate } from '../../../actions/h5Actions';
+import { changeStyle } from '../../../actions/h5Actions';
 import './rotate.less';
 
 export default class ReactRnd extends Component {
@@ -26,7 +26,9 @@ export default class ReactRnd extends Component {
 
     rotate = e => {
         const current = this.computeDegree({ x: e.pageX, y: e.pageY });
-        store.dispatch(rotate(current));
+        store.dispatch(changeStyle({
+            transform: `rotate(${current}deg)`,
+        }));
     };
 
     beginRotate = e => {

@@ -31,12 +31,22 @@ export default function (state = initialState, action) {
         return imState.merge({ focus: action.focus }).toJS();
     }
 
-    if (action.type === types.STYLE_ROTATE) {
+    if (action.type === types.STYLE_CHANGE) {
         const currentPage = imState.get('pages').get(imState.get('currentPage'));
         currentPage.elements.forEach(element => {
             if (element.id === imState.get('focus').get('id')) {
-                const style = Immutable.fromJS(element.style).merge({ transform: `rotate(${action.degree}deg)` });
+                const style = Immutable.fromJS(element.style).merge(action.style);
                 element.style = style.toJS();
+            }
+        });
+        return imState.toJS();
+    }
+
+    if (action.type === types.WORD_EDITABLE_CHANGE) {
+        const currentPage = imState.get('pages').get(imState.get('currentPage'));
+        currentPage.elements.forEach(element => {
+            if (element.id === imState.get('focus').get('id')) {
+                element.contenteditable = !element.contenteditable;
             }
         });
         return imState.toJS();

@@ -4,16 +4,19 @@
 import React from 'react';
 import Rnd from '../common/rnd/ReactRnd';
 import store from '../../store';
-import { changeFocus } from '../../actions/h5Actions';
+import { changeFocus, changeWordEditable } from '../../actions/h5Actions';
 
 function Word({ value, focusId }) {
     const wordClicked = () => {
         store.dispatch(changeFocus({ id: value.id, type: 'word' }));
     };
 
+    const changeEditable = () => {
+        store.dispatch(changeWordEditable(value.id));
+    };
     return (
         <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} style={value.style}>
-            <div>{ value.text }</div>
+            <div contentEditable={value.contenteditable} onDoubleClick={changeEditable} onBlur={changeEditable}>{ value.text }</div>
         </Rnd>
     );
 }

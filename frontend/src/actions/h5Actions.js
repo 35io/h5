@@ -35,9 +35,16 @@ export function changeFocus(focus) {
     };
 }
 
-export function rotate(degree) {
+export function changeStyle(style) {
     return {
-        type: types.STYLE_ROTATE,
-        degree,
+        type: types.STYLE_CHANGE,
+        style,
+    };
+}
+
+export function changeWordEditable(id) {
+    return {
+        type: types.WORD_EDITABLE_CHANGE,
+        id,
     };
 }
