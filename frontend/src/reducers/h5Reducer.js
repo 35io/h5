@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
     if (action.type === types.STYLE_ROTATE) {
         const currentPage = imState.get('pages').get(imState.get('currentPage'));
         currentPage.elements.forEach(element => {
-            if (element.id === imState.get('focusId')) {
+            if (element.id === imState.get('focus').get('id')) {
                 const style = Immutable.fromJS(element.style).merge({ transform: `rotate(${action.degree}deg)` });
                 element.style = style.toJS();
             }
