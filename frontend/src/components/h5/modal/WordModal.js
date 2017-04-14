@@ -9,6 +9,7 @@ export default class WordModal extends BaseModal {
         this.id = this.generateId();
         this.text = text;
         this.style = {};
+        this.className = '';
         this.contenteditable = false;
     }
 }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory } from 'react-router';
 import 'normalize.css';
+import 'animate.css';
 import store from './store';
 import App from './components/App';
 import Builder from './components/h5/Builder';

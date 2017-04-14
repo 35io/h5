@@ -42,6 +42,16 @@ export default function (state = initialState, action) {
         return imState.toJS();
     }
 
+    if (action.type === types.ANIMATION_CHANGE) {
+        const currentPage = imState.get('pages').get(imState.get('currentPage'));
+        currentPage.elements.forEach(element => {
+            if (element.id === imState.get('focus').get('id')) {
+                element.className = action.className;
+            }
+        });
+        return imState.toJS();
+    }
+
     if (action.type === types.WORD_EDITABLE_CHANGE) {
         const currentPage = imState.get('pages').get(imState.get('currentPage'));
         currentPage.elements.forEach(element => {

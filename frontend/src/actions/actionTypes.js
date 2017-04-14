@@ -14,3 +14,6 @@ export const FOCUS_CHANGED = Symbol('FOCUS_CHANGED');
 
 // style
 export const STYLE_CHANGE = Symbol('STYLE_CHANGE');
+
+// animation
+export const ANIMATION_CHANGE = Symbol('ANIMATION_CHANGE');

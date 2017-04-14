@@ -42,6 +42,13 @@ export function changeStyle(style) {
     };
 }
 
+export function changeAnimation(className) {
+    return {
+        type: types.ANIMATION_CHANGE,
+        className,
+    };
+}
+
 export function changeWordEditable(id) {
     return {
         type: types.WORD_EDITABLE_CHANGE,

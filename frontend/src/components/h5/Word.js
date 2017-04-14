@@ -16,7 +16,7 @@ function Word({ value, focusId }) {
     };
     return (
         <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} style={value.style} isDraggable={!value.contenteditable}>
-            <div contentEditable={value.contenteditable} onDoubleClick={changeEditable} onBlur={changeEditable}>{ value.text }</div>
+            <div className={value.className} contentEditable={value.contenteditable} onDoubleClick={changeEditable} onBlur={changeEditable}>{ value.text }</div>
         </Rnd>
     );
 }

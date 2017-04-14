@@ -2,8 +2,14 @@
  * Created by sunlong on 2017/3/25.
  */
 import React from 'react';
+import { SketchPicker } from 'react-color';
+import Tabs from 'react-simpletabs';
+import 'react-simpletabs/dist/react-simpletabs.css';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import store from '../../../store';
 import { changeStyle } from '../../../actions/h5Actions';
+import './fonts/iconfont.css';
 
 export default class WordPanel extends React.Component {
     changeFont = e => {
@@ -20,7 +26,7 @@ export default class WordPanel extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="wordPanel">
                 <select onChange={this.changeFont}>
                     <option value="黑体">黑体</option>
                     <option value="微软雅黑">微软雅黑</option>
@@ -39,6 +45,19 @@ export default class WordPanel extends React.Component {
                     <option value="26px">26px</option>
                     <option value="30px">30px</option>
                 </select>
+                <div>
+                    <i className="iconfont">&#xea53;</i><i className="iconfont">&#xea51;</i><i className="iconfont">&#xea54;</i>
+                    <i className="iconfont">&#xea55;</i><i className="iconfont">&#xea5c;</i><i className="iconfont">&#xea64;</i>
+                </div>
+                <Tabs>
+                    <Tabs.Panel title="文字颜色">
+                        <SketchPicker />
+                    </Tabs.Panel>
+                    <Tabs.Panel title="背景颜色">
+                        <SketchPicker />
+                    </Tabs.Panel>
+                </Tabs>
+                <div>透明度<Slider /></div>
             </div>
         );
     }

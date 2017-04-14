@@ -9,6 +9,7 @@ export default class InputModal extends BaseModal {
         this.id = this.generateId();
         this.placeholder = placeholder;
         this.style = {};
+        this.className = '';
         this.type = type;
     }
 }
