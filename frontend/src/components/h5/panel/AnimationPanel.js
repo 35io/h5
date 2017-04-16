@@ -6,9 +6,26 @@ import InputNumber from 'rc-input-number';
 import 'rc-input-number/assets/index.css';
 import 'rc-slider/assets/index.css';
 import store from '../../../store';
-import { changeAnimation } from '../../../actions/h5Actions';
+import { changeStyle, changeAnimation } from '../../../actions/h5Actions';
 
 export default class AnimationPanel extends React.Component {
+    changeDelay = value => {
+        store.dispatch(changeStyle({
+            animationDelay: `${value}s`,
+        }));
+    };
+
+    changeDuration = value => {
+        store.dispatch(changeStyle({
+            animationDuration: `${value}s`,
+        }));
+    };
+
+    changeIteration = value => {
+        store.dispatch(changeStyle({
+            animationIterationCount: value,
+        }));
+    };
 
     render() {
         return (
@@ -17,9 +34,9 @@ export default class AnimationPanel extends React.Component {
                     <Li name="从上淡入" animation="fadeInDown" />
                     <Li name="从下淡入" animation="fadeInUp" />
                 </ul>
-                <div>开始时间<InputNumber defaultValue={0} min={0} step={0.1} /></div>
-                <div>持续时间<InputNumber defaultValue={1} min={0} step={0.1} /></div>
-                <div>播放次数<InputNumber defaultValue={1} min={1} /></div>
+                <div>开始时间<InputNumber defaultValue={0} min={0} step={0.1} onChange={this.changeDelay} /></div>
+                <div>持续时间<InputNumber defaultValue={1} min={0} step={0.1} onChange={this.changeDuration} /></div>
+                <div>播放次数<InputNumber defaultValue={1} min={1} onChange={this.changeIteration} /></div>
             </div>
         );
     }

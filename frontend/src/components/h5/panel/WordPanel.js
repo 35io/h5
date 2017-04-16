@@ -12,6 +12,14 @@ import { changeStyle } from '../../../actions/h5Actions';
 import './fonts/iconfont.css';
 
 export default class WordPanel extends React.Component {
+    state = {
+        color: '#000000',
+        bgColor: '#ffffff',
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        textDecoration: 'none',
+    };
+
     changeFont = e => {
         store.dispatch(changeStyle({
             fontFamily: e.target.value,
@@ -22,6 +30,78 @@ export default class WordPanel extends React.Component {
         store.dispatch(changeStyle({
             fontSize: e.target.value,
         }));
+    };
+
+    changeFontColor = color => {
+        store.dispatch(changeStyle({
+            color: color.hex,
+        }));
+        this.setState({
+            color,
+        });
+    };
+
+    changeBgColor = color => {
+        store.dispatch(changeStyle({
+            backgroundColor: color.hex,
+        }));
+        this.setState({
+            bgColor: color,
+        });
+    };
+
+    changeTransparency = value => {
+        store.dispatch(changeStyle({
+            opacity: 1 - value,
+        }));
+    };
+
+    alignLeft = () => {
+        store.dispatch(changeStyle({
+            textAlign: 'left',
+        }));
+    };
+
+    alignCenter = () => {
+        store.dispatch(changeStyle({
+            textAlign: 'center',
+        }));
+    };
+
+    alignRight = () => {
+        store.dispatch(changeStyle({
+            textAlign: 'right',
+        }));
+    };
+
+    changeBold = () => {
+        const fontWeight = this.state.fontWeight === 'bold' ? 'normal' : 'bold';
+        store.dispatch(changeStyle({
+            fontWeight,
+        }));
+        this.setState({
+            fontWeight,
+        });
+    };
+
+    changeItalic = () => {
+        const fontStyle = this.state.fontStyle === 'italic' ? 'normal' : 'italic';
+        store.dispatch(changeStyle({
+            fontStyle,
+        }));
+        this.setState({
+            fontStyle,
+        });
+    };
+
+    changeUnderline = () => {
+        const textDecoration = this.state.textDecoration === 'underline' ? 'none' : 'underline';
+        store.dispatch(changeStyle({
+            textDecoration,
+        }));
+        this.setState({
+            textDecoration,
+        });
     };
 
     render() {
@@ -46,18 +126,18 @@ export default class WordPanel extends React.Component {
                     <option value="30px">30px</option>
                 </select>
                 <div>
-                    <i className="iconfont">&#xea53;</i><i className="iconfont">&#xea51;</i><i className="iconfont">&#xea54;</i>
-                    <i className="iconfont">&#xea55;</i><i className="iconfont">&#xea5c;</i><i className="iconfont">&#xea64;</i>
+                    <i className="iconfont" onClick={this.alignLeft}>&#xea53;</i><i className="iconfont" onClick={this.alignCenter}>&#xea51;</i><i className="iconfont" onClick={this.alignRight}>&#xea54;</i>
+                    <i className="iconfont" onClick={this.changeBold}>&#xea55;</i><i className="iconfont" onClick={this.changeItalic}>&#xea5c;</i><i className="iconfont" onClick={this.changeUnderline}>&#xea64;</i>
                 </div>
                 <Tabs>
                     <Tabs.Panel title="文字颜色">
-                        <SketchPicker />
+                        <SketchPicker onChangeComplete={this.changeFontColor} color={this.state.color} />
                     </Tabs.Panel>
                     <Tabs.Panel title="背景颜色">
-                        <SketchPicker />
+                        <SketchPicker onChangeComplete={this.changeBgColor} color={this.state.bgColor} />
                     </Tabs.Panel>
                 </Tabs>
-                <div>透明度<Slider /></div>
+                <div>透明度<Slider onAfterChange={this.changeTransparency} min={0} max={1} step={0.1} /></div>
             </div>
         );
     }
