@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import moment from 'moment';
+import Noty from 'noty';
 import { connect } from 'react-redux';
 import Panel from './panel/Panel';
 import Header from './header/Header';
@@ -12,6 +13,8 @@ import PageContainer from './pageContainer/PageContainer';
 import { addPage } from '../../actions/h5Actions';
 import PageModal from './modal/PageModal';
 import Sidebar from './sidebar/Sidebar';
+import Fetch from '../../common/FetchIt';
+import API_URL from '../../common/url';
 
 import './builder.less';
 
@@ -28,10 +31,22 @@ class Builder extends React.Component {
 
     };
 
+    save = () => {
+        Fetch.post(API_URL.activity.save, { name: '', pages: JSON.stringify(this.props.pages), published: false }).then(() => {
+            new Noty({ text: '保存成功' }).show();
+        });
+    };
+
+    publish = () => {
+        Fetch.post(API_URL.activity.save, { name: '', pages: JSON.stringify(this.props.pages), published: true }).then(() => {
+            new Noty({ text: '发布成功' }).show();
+        });
+    };
+
     render() {
         return (
             <div>
-                <Header />
+                <Header onSave={this.save} onPublish={this.publish} />
                 <div className="builder">
                     <Template />
                     <PageContainer pages={this.props.pages} focusId={this.props.focus.id} />

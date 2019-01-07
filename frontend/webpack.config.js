@@ -1,11 +1,12 @@
 /**
  * Created by sunlong on 16/1/27.
  */
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: {
@@ -19,11 +20,17 @@ module.exports = {
             exclude: /node_modules/,
             use: [{ loader: 'babel-loader' }],
         }, {
-            test: /\.less$/,
-            use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'less-loader'] }),
-        }, {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
+            test: /\.(le|c)ss$/,
+            use: [
+                devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                'css-loader',
+                {
+                    loader: 'less-loader',
+                    options: {
+                        javascriptEnabled: true,
+                    },
+                },
+            ],
         }, {
             test: /\.(jpg|png|gif)$/,
             use: ['file-loader?name=images/[name].[ext]'],
@@ -33,7 +40,10 @@ module.exports = {
         }],
     },
     plugins: [
-        new ExtractTextPlugin({ filename: 'css/[id].css' }),
+        new MiniCssExtractPlugin({
+            filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+            chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',
+        }),
         new HtmlWebpackPlugin({
             chunks:['front'],
             filename:'index.html',

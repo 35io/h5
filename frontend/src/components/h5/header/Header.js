@@ -2,6 +2,7 @@
  * Created by madofu@163.com.
  */
 import React from 'react';
+import SkyLight from 'react-skylight';
 import './header.less';
 import WordModal from '../modal/WordModal';
 import InputModal from '../modal/InputModal';
@@ -38,6 +39,9 @@ class Header extends React.Component {
         store.dispatch(addElements(new InputModal()));
     };
 
+    showImages = () => {
+        this.imageModal.show();
+    };
     render() {
         return (
             <div className="h5Header">
@@ -45,7 +49,7 @@ class Header extends React.Component {
                 <ul>
                     <li onClick={this.addWord}>文字</li>
                     <li>背景</li>
-                    <li>图片</li>
+                    <li onClick={this.showImages}>图片</li>
                     <li>音乐</li>
                     <li onMouseOver={this.showForm} onMouseOut={this.hideForm}>表单
                         <ul className={`form ${this.state.formVisible ? '' : 'hidden'}`}>
@@ -55,9 +59,12 @@ class Header extends React.Component {
                     </li>
                 </ul>
                 <ul>
-                    <li>保存</li>
-                    <li>发布</li>
+                    <li onClick={this.props.onSave}>保存</li>
+                    <li onClick={this.props.onPublish}>发布</li>
                 </ul>
+                <SkyLight hideOnOverlayClicked ref={com => { this.imageModal = com; }} title="添加图片">
+                    Hello, I dont have any callback.
+                </SkyLight>
             </div>
         );
     }

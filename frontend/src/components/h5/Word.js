@@ -15,9 +15,14 @@ function Word({ value, focusId }) {
         store.dispatch(changeWordEditable(value.id));
     };
 
+    const animation = {
+        animationDelay: value.style.animationDelay,
+        animationDuration: value.style.animationDuration,
+        animationIterationCount: value.style.animationIterationCount,
+    };
     return (
-        <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} isDraggable={!value.contenteditable}>
-            <div className={value.className} style={value.style} contentEditable={value.contenteditable} onDoubleClick={changeEditable} onBlur={changeEditable}>{ value.text }</div>
+        <Rnd onClick={wordClicked} className={focusId === value.id ? 'focused' : ''} style={value.style} isDraggable={!value.contenteditable}>
+            <div className={value.className} style={animation} contentEditable={value.contenteditable} onDoubleClick={changeEditable} onBlur={changeEditable}>{ value.text }</div>
         </Rnd>
     );
 }

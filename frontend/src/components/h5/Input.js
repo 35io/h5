@@ -11,9 +11,14 @@ function Input({ value, focusId }) {
         store.dispatch(changeFocus({ id: value.id, type: 'input' }));
     };
 
+    const animation = {
+        animationDelay: value.style.animationDelay,
+        animationDuration: value.style.animationDuration,
+        animationIterationCount: value.style.animationIterationCount,
+    };
     return (
         <Rnd onClick={onClicked} className={focusId === value.id ? 'focused' : ''} style={value.style}>
-            <input type={value.type} placeholder={value.placeholder} />
+            <input type={value.type} style={animation} placeholder={value.placeholder} />
         </Rnd>
     );
 }
