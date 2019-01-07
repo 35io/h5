@@ -14,7 +14,7 @@ mock www.eqxiu.com and www.rabbitpre.com
     git clone git@github.com:sunlong/h5.git
     cd h5/frontend
     npm install
-    webpack-dev-server
+    webpack-dev-server --mode development
 ```
 
 ## mobile/app

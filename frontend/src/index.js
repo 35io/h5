@@ -12,8 +12,8 @@ import './common/main.css';
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route path="/" component={App}>
-                <Route path="builder" component={Builder} />
+            <Route component={App}>
+                <Route path="/" component={Builder} />
             </Route>
 
         </Router>
